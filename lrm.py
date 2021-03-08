@@ -1,8 +1,8 @@
 import quandl
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 import datetime
+import matplotlib.pyplot as plt
 
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
@@ -36,4 +36,7 @@ def predictFutureStockPrices(ticker, days):
 
     forecast = clf.predict(X_pred)
     
+    end_date = datetime.date(2018,3,28) + datetime.timedelta(days = pred_days - 1) 
+    dates = pd.date_range(start = '2018-03-28', end = end_date.isofformat())
+    return dates, forecast
 
