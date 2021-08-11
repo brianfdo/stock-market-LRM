@@ -8,7 +8,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
 
-def predictFutureStockPrices(ticker, days):
+def linearReg(ticker, days):
     quandl.ApiConfig.api_key = 'ekUM3Ut18s6GyHRFqxV9'
 
     df = quandl.get("WIKI/" + ticker.upper(), paginate = False)
@@ -40,3 +40,7 @@ def predictFutureStockPrices(ticker, days):
     dates = pd.date_range(start = '2018-03-28', end = end_date.isofformat())
     return dates, forecast
 
+def predict(data):
+    plt.plot(data[0], data[1], color = 'b')
+    df['Adj. Close'].plot(color = 'g')
+    plt.xlim(xmin = datetime.date(2017,4,6), xmax = datetime.date(2018,5,2))
